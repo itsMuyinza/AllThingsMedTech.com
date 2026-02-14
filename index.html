@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Things MedTech | Innovation Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,800&family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+      /* Custom Texture & Scrollbar */
+      body {
+        background-color: #F2F0E9;
+        color: #1C1C1C;
+        /* Global cursor hide to support CustomCursor */
+        cursor: none !important;
+      }
+      
+      /* Ensure links and buttons don't show the hand cursor */
+      a, button, [role="button"], input, select, textarea, label {
+        cursor: none !important;
+      }
+
+      .grain-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 50;
+        opacity: 0.05;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      .font-serif-display {
+        font-family: 'Playfair Display', serif;
+      }
+      
+      .font-tech {
+        font-family: 'Space Grotesk', sans-serif;
+      }
+
+      .font-body {
+        font-family: 'Inter', sans-serif;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #F2F0E9; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #2B4C59; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #D65A31; 
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bone: '#F2F0E9',
+              ink: '#1C1C1C',
+              'med-teal': '#2B4C59',
+              'med-teal-light': '#3E6B7D',
+              'retro-orange': '#D65A31',
+              'retro-orange-light': '#E87A54',
+              'mustard': '#E6AF2E',
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', 'serif'],
+              tech: ['"Space Grotesk"', 'sans-serif'],
+              sans: ['"Inter"', 'sans-serif'],
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
+            },
+            animation: {
+              fadeInUp: 'fadeInUp 1s ease-out forwards',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <div class="grain-overlay"></div>
+    <!-- Link the main TypeScript entry point -->
+    <script type="module" src="./index.tsx"></script>
+  </body>
+</html>
