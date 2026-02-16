@@ -13,6 +13,8 @@ export default function Nav() {
         <Link href="/for-engineers" className="text-sm font-medium hover:text-[var(--primary)] transition-colors">For Engineers</Link>
         <Link href="/careers" className="text-sm font-medium hover:text-[var(--primary)] transition-colors">Careers</Link>
         <Link href="/investors" className="text-sm font-medium hover:text-[var(--primary)] transition-colors">Investors</Link>
+        <Link href="/login" className="text-sm font-medium hover:text-[var(--primary)] transition-colors">Log In</Link>
+        <Link href="/join" className="btn-primary text-sm !py-2 !px-4">List Your Company</Link>
       </div>
     </nav>
   );

@@ -1,24 +1,24 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { companies, getSectors } from "@/data/companies";
 import { searchCompanies, generateInsight } from "@/utils/searchLogic";
 import CompanyCard from "@/components/CompanyCard";
 
-export default function DirectoryPage() {
+function DirectoryContent() {
+  const searchParams = useSearchParams();
   const [query, setQuery] = useState("");
   const [sectorFilter, setSectorFilter] = useState("");
   const [stageFilter, setStageFilter] = useState("");
   const sectors = getSectors();
   const stages = ["Public", "Series A", "Series B", "Series C", "Series D", "Series F", "Acquired"];
 
-  // Read initial query from URL on client
-  const searchParams = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
-  const initialQ = searchParams?.get("q") || "";
-  if (initialQ && !query) {
-    // Defer to avoid render loop
-    setTimeout(() => setQuery(initialQ), 0);
-  }
+  // Sync URL ?q= param into state on mount
+  useEffect(() => {
+    const q = searchParams.get("q");
+    if (q) setQuery(q);
+  }, [searchParams]);
 
   const results = useMemo(() => {
     if (query.trim()) {
@@ -85,5 +85,20 @@ export default function DirectoryPage() {
         ))}
       </div>
     </main>
+  );
+}
+
+export default function DirectoryPage() {
+  return (
+    <Suspense fallback={
+      <main className="container py-12 z-10 relative">
+        <div className="mb-10">
+          <h1 className="text-4xl font-bold mb-4">Company Directory</h1>
+          <p className="text-[var(--text-muted)] text-lg">Loading...</p>
+        </div>
+      </main>
+    }>
+      <DirectoryContent />
+    </Suspense>
   );
 }

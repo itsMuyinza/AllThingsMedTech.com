@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://allthingsmedtech.com"),
   title: {
     default: "AllThingsMedTech | The Future Supply Chain",
     template: "%s | AllThingsMedTech",
