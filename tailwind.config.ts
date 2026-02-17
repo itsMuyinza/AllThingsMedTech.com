@@ -8,24 +8,37 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#06b6d4",
-        secondary: "#6366f1",
-        "bg-dark": "#030712",
-        "bg-card": "#111827",
+        bone: "#F2F0E9",
+        ink: "#1C1C1C",
+        "med-teal": "#2B4C59",
+        "med-teal-light": "#3E6B7D",
+        "retro-orange": "#D65A31",
+        "retro-orange-light": "#E87A54",
+        mustard: "#E6AF2E",
       },
       fontFamily: {
-        heading: ["Space Grotesk", "sans-serif"],
-        body: ["Outfit", "sans-serif"],
-        mono: ["JetBrains Mono", "Fira Code", "monospace"],
+        serif: ['"Playfair Display"', "serif"],
+        tech: ['"Space Grotesk"', "sans-serif"],
+        sans: ['"Inter"', "sans-serif"],
       },
       keyframes: {
-        scroll: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slideDown: {
+          "0%": { opacity: "0", transform: "translateY(-10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
       },
       animation: {
-        scroll: "scroll 30s linear infinite",
+        fadeInUp: "fadeInUp 1s ease-out forwards",
+        slideDown: "slideDown 0.2s ease-out",
+        fadeIn: "fadeIn 0.2s ease-out forwards",
       },
     },
   },
